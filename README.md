@@ -8,7 +8,7 @@ Institución Universitaria Pascual Bravo · Pruebas de Software
 ## Documento y exposición
 
 - [Documento técnico: plan, metodología y resultados](docs/plan-de-pruebas.md).
-- [Presentación de 10 minutos, con notas de exposición](https://docs.google.com/presentation/d/1X2_pCfRGfzoN0ow7vTUFBQwWNWM1GYirXDvD3mtE5pU/edit).
+- [Presentación en Canva: 10 minutos, con notas de exposición](https://www.canva.com/d/abTmuGad1-bsWVh).
 - [Carpeta de entrega en Drive](https://drive.google.com/drive/folders/1L5MnloUN0epNl_G1xDRuxmgganr-nLw7).
 
 ## Anexos verificables
