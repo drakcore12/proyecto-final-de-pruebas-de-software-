@@ -1,0 +1,29 @@
+[
+  {
+    "file": "navegador-auth-sin-token.jpg",
+    "url_observed": "https://dummyjson.com/auth/me",
+    "case": "CT-R03-02",
+    "captured_at_bogota": "2026-11-09T10:14:30-05:00",
+    "sha256": "ef0109e828797c5e3597b56727c8834fe9a8a113a986c366d7172b12b3fed5c9",
+    "kind": "Captura directa del navegador, sin edición del contenido",
+    "note": "Verificación visual complementaria del cuerpo JSON; el estado HTTP se documenta en los registros de ejecución."
+  },
+  {
+    "file": "navegador-paginacion-vacia.jpg",
+    "url_observed": "https://dummyjson.com/products?limit=1&skip=194",
+    "case": "CT-F03-03",
+    "captured_at_bogota": "2026-11-09T10:14:48-05:00",
+    "sha256": "c4f47db9e747226660721ee86c760738dcd11bbd37443073abce081fa4f920d2",
+    "kind": "Captura directa del navegador, sin edición del contenido",
+    "note": "Verificación visual complementaria del cuerpo JSON; el estado HTTP se documenta en los registros de ejecución."
+  },
+  {
+    "file": "navegador-producto-inexistente.jpg",
+    "url_observed": "https://dummyjson.com/products/100194",
+    "case": "CT-F04-02",
+    "captured_at_bogota": "2026-11-09T10:14:54-05:00",
+    "sha256": "eedf8680cd2fea124eb260ba6fcb590f201905dd278aba8c7aeaab67f34ced72",
+    "kind": "Captura directa del navegador, sin edición del contenido",
+    "note": "Verificación visual complementaria del cuerpo JSON; el estado HTTP se documenta en los registros de ejecución."
+  }
+]

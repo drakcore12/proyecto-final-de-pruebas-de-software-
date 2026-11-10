@@ -1,0 +1,247 @@
+[
+  {
+    "case": "CT-R17-01",
+    "file": "manual-20261109T150248-CT-R17-01.json",
+    "observations": {
+      "status": 200,
+      "count": 24,
+      "required_nonempty_strings": true
+    }
+  },
+  {
+    "case": "CT-R17-02",
+    "file": "manual-20261109T150248-CT-R17-02.json",
+    "observations": {
+      "status": 200,
+      "unique_slugs": true,
+      "path_mismatches": []
+    }
+  },
+  {
+    "case": "CT-F01-01",
+    "file": "manual-20261109T150248-CT-F01-01.json",
+    "observations": {
+      "status": 200,
+      "id": 1,
+      "username": "emilys",
+      "message": null,
+      "token_fields": [
+        "accessToken",
+        "refreshToken"
+      ]
+    }
+  },
+  {
+    "case": "CT-F01-02",
+    "file": "manual-20261109T150248-CT-F01-02.json",
+    "observations": {
+      "status": 400,
+      "id": null,
+      "username": null,
+      "message": "Invalid credentials",
+      "token_fields": []
+    }
+  },
+  {
+    "case": "CT-F01-03",
+    "file": "manual-20261109T150248-CT-F01-03.json",
+    "observations": {
+      "status": 400,
+      "id": null,
+      "username": null,
+      "message": "Invalid credentials",
+      "token_fields": []
+    }
+  },
+  {
+    "case": "CT-F01-04",
+    "file": "manual-20261109T150248-CT-F01-04.json",
+    "observations": {
+      "status": 400,
+      "id": null,
+      "username": null,
+      "message": "Username and password required",
+      "token_fields": []
+    }
+  },
+  {
+    "case": "CT-F02-01",
+    "file": "manual-20261109T150248-CT-F02-01.json",
+    "observations": {
+      "status": 200,
+      "id": null,
+      "username": null,
+      "message": null,
+      "token_fields": [
+        "accessToken",
+        "refreshToken"
+      ],
+      "profile_after_refresh": {
+        "status": 200,
+        "id": 1,
+        "username": "emilys",
+        "message": null,
+        "token_fields": []
+      }
+    }
+  },
+  {
+    "case": "CT-F02-02",
+    "file": "manual-20261109T150248-CT-F02-02.json",
+    "observations": {
+      "status": 401,
+      "id": null,
+      "username": null,
+      "message": "Refresh token required",
+      "token_fields": []
+    }
+  },
+  {
+    "case": "CT-F02-03",
+    "file": "manual-20261109T150248-CT-F02-03.json",
+    "observations": {
+      "status": 403,
+      "id": null,
+      "username": null,
+      "message": "Invalid refresh token",
+      "token_fields": []
+    }
+  },
+  {
+    "case": "CT-F03-01",
+    "file": "manual-20261109T150248-CT-F03-01.json",
+    "observations": {
+      "status": 200,
+      "baseline_N": 194,
+      "baseline_count": 194,
+      "count": 1,
+      "total": 194,
+      "ids_match_baseline_slice": true,
+      "unique_ids": true,
+      "ids": [
+        1
+      ]
+    }
+  },
+  {
+    "case": "CT-F03-02",
+    "file": "manual-20261109T150248-CT-F03-02.json",
+    "observations": {
+      "status": 200,
+      "baseline_N": 194,
+      "baseline_count": 194,
+      "count": 1,
+      "total": 194,
+      "ids_match_baseline_slice": true,
+      "unique_ids": true,
+      "ids": [
+        194
+      ]
+    }
+  },
+  {
+    "case": "CT-F03-03",
+    "file": "manual-20261109T150248-CT-F03-03.json",
+    "observations": {
+      "status": 200,
+      "baseline_N": 194,
+      "baseline_count": 194,
+      "count": 0,
+      "total": 194,
+      "ids_match_baseline_slice": true,
+      "unique_ids": true,
+      "ids": []
+    }
+  },
+  {
+    "case": "CT-F03-04",
+    "file": "manual-20261109T150248-CT-F03-04.json",
+    "observations": {
+      "status": 200,
+      "baseline_N": 194,
+      "baseline_count": 194,
+      "count": 194,
+      "total": 194,
+      "ids_match_baseline_slice": true,
+      "unique_ids": true,
+      "ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "case": "CT-F04-01",
+    "file": "manual-20261109T150248-CT-F04-01.json",
+    "observations": {
+      "status": 200,
+      "requested_id": 1,
+      "returned_id": 1,
+      "title_nonempty_string": true,
+      "message": null
+    }
+  },
+  {
+    "case": "CT-F04-02",
+    "file": "manual-20261109T150248-CT-F04-02.json",
+    "observations": {
+      "status": 404,
+      "requested_id": 100194,
+      "returned_id": null,
+      "title_nonempty_string": false,
+      "message": "Product with id '100194' not found"
+    }
+  },
+  {
+    "case": "CT-F05-01",
+    "file": "manual-20261109T150248-CT-F05-01.json",
+    "observations": {
+      "status": 200,
+      "query": "Essence Mascara Lash Princess",
+      "baseline_absence": false,
+      "count": 1,
+      "total": 1,
+      "contains_product_1": true,
+      "valid_products_array": true
+    }
+  },
+  {
+    "case": "CT-F05-02",
+    "file": "manual-20261109T150248-CT-F05-02.json",
+    "observations": {
+      "status": 200,
+      "query": "qa_sin_coincidencias_29da8e8733794969b008ea929a04484b",
+      "baseline_absence": true,
+      "count": 0,
+      "total": 0,
+      "contains_product_1": false,
+      "valid_products_array": true
+    }
+  },
+  {
+    "case": "CT-R03-04",
+    "file": "manual-20261109T150248-CT-R03-04.json",
+    "observations": {
+      "control_before_expiry": {
+        "status": 200,
+        "id": 1,
+        "username": "emilys",
+        "message": null,
+        "token_fields": []
+      },
+      "exp_utc": "2026-11-09T15:03:54+00:00",
+      "query_after_expiry_utc": "2026-11-09T15:04:36.136139+00:00",
+      "seconds_after_exp": 42.14,
+      "after_expiry": {
+        "status": 401,
+        "id": null,
+        "username": null,
+        "message": "Token Expired!",
+        "token_fields": []
+      }
+    }
+  }
+]
