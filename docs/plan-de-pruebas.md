@@ -44,8 +44,6 @@ Tabla 1
 
 Historial de cambios del documento
 
-## 
-
 | Versión | Fecha | Cambio |
 | --- | --- | --- |
 | 1.1 | 09/11/2026 | Expediente de ejecución y retest. |
@@ -54,7 +52,7 @@ Historial de cambios del documento
 | 3.0 | 18/11/2026 | Consolidación en Google Docs y reglas D1–D3. |
 | 3.1 | 18/11/2026 | Estructura de la guía, adaptación, condiciones y sustentación del 19/11/2026. |
 
-2. Introducción y adaptación
+## 2. Introducción y adaptación
 
 ### 2.1 Alcance del documento
 
