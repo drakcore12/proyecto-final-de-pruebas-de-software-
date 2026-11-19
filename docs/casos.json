@@ -231,7 +231,7 @@
     "id": "CT-F03-04",
     "risk": "F-R03",
     "title": "Límite cero documentado",
-    "tech": "Valores límite sobre desplazamiento [0,N-1]; limit=0 es clase especial",
+    "tech": "Partición de equivalencia: limit=0 como clase especial documentada",
     "condition": "CF03-4",
     "data": "limit=0&skip=0",
     "pre": "Obtener línea base GET /products?limit=0&skip=0; N=total, N>=1. Guardar orden e IDs; si cambia el conjunto, repetir la base.",

@@ -1,8 +1,8 @@
 # Casos y trazabilidad de DummyJSON
 
-Resultado de ejecución: **23 Aprobados y 1 Fallido**. Consultar [registro con evidencias](registro-ejecucion.md). Se conserva el oráculo definido antes de ejecutar; se informa además el código exacto observado. El equipo debe revisar la especificación antes de su aprobación académica. Un 5xx o 429 no demuestra que una validación funcional sea correcta.
+Resultado de ejecución: **23 Aprobados y 1 Fallido**. Consultar el [informe final](https://docs.google.com/document/d/14eZrwDed-F5Lf6CiXBdScSnbSLmlF25YsoXzNlJ_lUc/edit) y el [registro consolidado](../evidencias/resultados-consolidados.json). Se conserva el oráculo definido antes de ejecutar; se informa además el código exacto observado. Un 5xx o 429 no demuestra que una validación funcional sea correcta.
 
-| N.º | Caso | Riesgo | Condición | Modalidad | Prioridad | Responsable propuesto |
+| N.º | Caso | Riesgo | Condición | Modalidad | Prioridad | Responsable del plan |
 |---:|---|---|---|---|---|---|
 | 1 | [CT-R07-01](#ct-r07-01) | R07 | C07-01 | Auto | P1 | Miguel Ángel Noreña Cano |
 | 2 | [CT-R07-02](#ct-r07-02) | R07 | C07-02 | Auto | P1 | Miguel Ángel Noreña Cano |
@@ -40,6 +40,16 @@ Resultado de ejecución: **23 Aprobados y 1 Fallido**. Consultar [registro con e
 - **F-R04:** [CT-F04-01](#ct-f04-01), [CT-F04-02](#ct-f04-02)
 - **F-R05:** [CT-F05-01](#ct-f05-01), [CT-F05-02](#ct-f05-02)
 
+## Reglas de decisión para escrituras simuladas
+
+| Regla | Caso | Precondición | Respuesta inmediata | Lectura independiente posterior |
+|---|---|---|---|---|
+| D1 | CT-R07-01 | Título UUID nuevo | POST 201, ID generado | GET del ID generado = 404 |
+| D2 | CT-R07-02 | GET inicial 200 y título T0 | PATCH 200 refleja el título único T1 | GET 200 conserva T0 |
+| D3 | CT-R07-03 | GET inicial 200 y recurso disponible | DELETE 200, isDeleted=true y deletedOn | GET 200 conserva el recurso |
+
+Cada regla aprueba al cumplir conjuntamente ambas comprobaciones. T0 es el título inicial y T1 un marcador distinto generado con UUID. Las operaciones se contrastan mediante transición de estados observables. Los tokens temporales se descartan al finalizar los casos de sesión.
+
 ## CT-R07-01
 
 **Alta simulada sin persistencia**
@@ -51,7 +61,7 @@ Resultado de ejecución: **23 Aprobados y 1 Fallido**. Consultar [registro con e
 - Resultado esperado: La respuesta refleja el alta; una lectura independiente no encuentra el recurso creado.
 - Implementación ejecutable: [CT-R07-01](../tests/pruebas_api.py#L84). Buscar el ID en CASES; el código es la fuente de los pasos.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R07-02
 
@@ -64,7 +74,7 @@ Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Apro
 - Resultado esperado: PATCH refleja el cambio y GET posterior conserva el título inicial.
 - Implementación ejecutable: [CT-R07-02](../tests/pruebas_api.py#L99). Buscar el ID en CASES; el código es la fuente de los pasos.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R07-03
 
@@ -77,7 +87,7 @@ Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Apro
 - Resultado esperado: DELETE informa isDeleted=true y deletedOn; GET posterior conserva el recurso.
 - Implementación ejecutable: [CT-R07-03](../tests/pruebas_api.py#L110). Buscar el ID en CASES; el código es la fuente de los pasos.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R03-01
 
@@ -90,7 +100,7 @@ Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Apro
 - Resultado esperado: El perfil autenticado coincide con el usuario que inició sesión.
 - Implementación ejecutable: [CT-R03-01](../tests/pruebas_api.py#L122). Buscar el ID en CASES; el código es la fuente de los pasos.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R03-02
 
@@ -103,7 +113,7 @@ Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Apro
 - Resultado esperado: Se rechaza /auth/me y no se devuelve un perfil de usuario.
 - Implementación ejecutable: [CT-R03-02](../tests/pruebas_api.py#L130). Buscar el ID en CASES; el código es la fuente de los pasos.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R03-03
 
@@ -116,7 +126,7 @@ Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Apro
 - Resultado esperado: El token alterado es rechazado; no se devuelve un perfil.
 - Implementación ejecutable: [CT-R03-03](../tests/pruebas_api.py#L137). Buscar el ID en CASES; el código es la fuente de los pasos.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Fallido, INC-001. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Fallido, INC-001.
 
 ## CT-R03-04
 
@@ -136,7 +146,7 @@ Pasos:
 4. Esperar hasta superar exp en cinco segundos.
 5. Repetir GET /auth/me con el mismo token.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R17-01
 
@@ -154,7 +164,7 @@ Pasos:
 2. Recorrer todos los elementos.
 3. Verificar slug, name y url.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-R17-02
 
@@ -172,7 +182,7 @@ Pasos:
 2. Comparar número de slugs con número de valores distintos.
 3. Analizar cada URL y comparar su ruta con /products/category/{slug}.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F01-01
 
@@ -190,7 +200,7 @@ Pasos:
 2. Registrar estado HTTP y cuerpo con tokens censurados.
 3. Comparar con el resultado esperado.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F01-02
 
@@ -208,7 +218,7 @@ Pasos:
 2. Registrar estado HTTP y cuerpo con tokens censurados.
 3. Comparar con el resultado esperado.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F01-03
 
@@ -226,7 +236,7 @@ Pasos:
 2. Registrar estado HTTP y cuerpo con tokens censurados.
 3. Comparar con el resultado esperado.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F01-04
 
@@ -244,7 +254,7 @@ Pasos:
 2. Registrar estado HTTP y cuerpo con tokens censurados.
 3. Comparar con el resultado esperado.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F02-01
 
@@ -263,7 +273,7 @@ Pasos:
 3. Registrar respuesta censurada.
 4. Si hay accessToken en el caso positivo, verificar identidad mediante /auth/me.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F02-02
 
@@ -282,7 +292,7 @@ Pasos:
 3. Registrar respuesta censurada.
 4. Si hay accessToken en el caso positivo, verificar identidad mediante /auth/me.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F02-03
 
@@ -301,7 +311,7 @@ Pasos:
 3. Registrar respuesta censurada.
 4. Si hay accessToken en el caso positivo, verificar identidad mediante /auth/me.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F03-01
 
@@ -319,7 +329,7 @@ Pasos:
 2. Ejecutar GET /products?limit=1&skip=0.
 3. Comparar IDs, tamaño y total con la línea base.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F03-02
 
@@ -337,7 +347,7 @@ Pasos:
 2. Ejecutar GET /products?limit=1&skip=N-1.
 3. Comparar IDs, tamaño y total con la línea base.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F03-03
 
@@ -355,14 +365,14 @@ Pasos:
 2. Ejecutar GET /products?limit=1&skip=N.
 3. Comparar IDs, tamaño y total con la línea base.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F03-04
 
 **Límite cero documentado**
 
 - Riesgo: F-R03; condición: CF03-4.
-- Técnica y derivación: Valores límite sobre desplazamiento [0,N-1]; limit=0 es clase especial.
+- Técnica y derivación: Partición de equivalencia: limit=0 pertenece a la clase especial documentada que devuelve todos los productos.
 - Datos: limit=0&skip=0
 - Precondiciones: Obtener línea base GET /products?limit=0&skip=0; N=total, N>=1. Guardar orden e IDs; si cambia el conjunto, repetir la base.
 - Resultado esperado: HTTP 200; longitud de products=N; sin IDs duplicados.
@@ -373,7 +383,7 @@ Pasos:
 2. Ejecutar GET /products?limit=0&skip=0.
 3. Comparar IDs, tamaño y total con la línea base.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F04-01
 
@@ -391,7 +401,7 @@ Pasos:
 2. GET /products/{id}.
 3. Comparar estado y estructura JSON.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F04-02
 
@@ -409,7 +419,7 @@ Pasos:
 2. GET /products/{id}.
 3. Comparar estado y estructura JSON.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F05-01
 
@@ -428,7 +438,7 @@ Pasos:
 3. GET /products/search?q={q}&limit=0.
 4. Comparar con el resultado esperado.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
 
 ## CT-F05-02
 
@@ -447,4 +457,4 @@ Pasos:
 3. GET /products/search?q={q}&limit=0.
 4. Comparar con el resultado esperado.
 
-Evidencia y fecha: [registro de ejecución](registro-ejecucion.md). Estado: Aprobado. Postcondición: cerrar sesión local y eliminar tokens temporales cuando corresponda; no intentar restaurar una base externa.
+Evidencia y fecha: [registro consolidado](../evidencias/resultados-consolidados.json). Estado: Aprobado.
