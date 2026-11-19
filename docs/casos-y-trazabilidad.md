@@ -1,5 +1,13 @@
 # Casos y trazabilidad de DummyJSON
 
+## Cómo leer los casos
+
+Los casos se derivan de los riesgos del alcance, la documentación de DummyJSON y las técnicas de diseño de la asignatura. La condición define qué comprobar; el caso concreta entradas, precondiciones y resultado esperado; la evidencia registra qué ocurrió.
+
+**CT-R07-02** identifica un caso de prueba (CT), del riesgo de falsa persistencia (R07), segundo caso de ese riesgo (02). **C07-02** identifica su condición. En **CT-F01-01**, F01 identifica el grupo funcional de login vinculado con F-R01, y el último 01 distingue el caso. Es una convención propia del proyecto.
+
+El script Python enlazado implementa seis casos. Los otros 18 diseños tuvieron ejecución HTTP asistida. Una prueba aprueba al coincidir con su resultado esperado; en una prueba negativa ese resultado puede ser un rechazo HTTP.
+
 Resultado de ejecución: **23 Aprobados y 1 Fallido**. Consultar el [informe final](https://docs.google.com/document/d/14eZrwDed-F5Lf6CiXBdScSnbSLmlF25YsoXzNlJ_lUc/edit) y el [registro consolidado](../evidencias/resultados-consolidados.json). Se conserva el oráculo definido antes de ejecutar; se informa además el código exacto observado. Un 5xx o 429 no demuestra que una validación funcional sea correcta.
 
 | N.º | Caso | Riesgo | Condición | Modalidad | Prioridad | Responsable del plan |

@@ -28,7 +28,7 @@ Palabras clave: pruebas de software, API REST, DummyJSON, riesgo, trazabilidad.
 
 ### 1.1 Identificador único del documento
 
-PP-DUMMYJSON-FINAL-01. Versión 3.1. Revisión documental: 18 de noviembre de 2026. Sustentación: 19 de noviembre de 2026. Línea base técnica de código y evidencias: commit 7ddd782f639256043145a5856fc993b8125cfe4d del repositorio del proyecto.
+PP-DUMMYJSON-FINAL-01. Versión 3.2. Revisión documental y sustentación: 19 de noviembre de 2026. Línea base técnica de código y evidencias: commit 7ddd782f639256043145a5856fc993b8125cfe4d del repositorio del proyecto.
 
 ### 1.2 Organización emisora y autores
 
@@ -53,10 +53,15 @@ Historial de cambios del documento
 | 2.1 | 10/11/2026 | Publicación inicial en GitHub. |
 | 3.0 | 18/11/2026 | Consolidación en Google Docs y reglas D1–D3. |
 | 3.1 | 18/11/2026 | Estructura de la guía, adaptación, condiciones y sustentación del 19/11/2026. |
+| 3.2 | 19/11/2026 | Explicación de DummyJSON, HTTP/JSON, Python, diseño e identificación de casos e interpretación de resultados. |
 
 ## 2. Introducción y adaptación
 
 ### 2.1 Alcance del documento
+
+DummyJSON es una API REST pública de práctica que ofrece datos ficticios de productos, usuarios y otros recursos. Una API permite que un programa solicite información o una operación a otro servicio; un endpoint es la ruta concreta de esa operación. En este proyecto se evalúa el servicio de terceros mediante solicitudes HTTP y respuestas JSON, sin desarrollar su servidor ni acceder a su código interno.
+
+HTTP es el protocolo de intercambio. GET consulta información; POST envía datos, por ejemplo para iniciar sesión o simular un alta; PATCH modifica parcialmente un recurso; DELETE solicita su eliminación. JSON representa los datos mediante objetos, listas y valores. En DummyJSON, las escrituras evaluadas son simuladas: reflejan el cambio en la respuesta y no lo conservan para una lectura posterior (DummyJSON, s. f.-a, s. f.-b).
 
 El objetivo es verificar el contrato observable de autenticación, consulta de productos y escrituras simuladas, con especial atención a sesiones no válidas y a la interpretación de la persistencia. La guía de la asignatura organiza el trabajo según ISO/IEC/IEEE 29119-3 y pruebas basadas en riesgos. Se aplica adaptación académica, sin declarar conformidad integral con la norma (International Organization for Standardization, 2021; Plan de pruebas de software, s. f.).
 
@@ -76,7 +81,11 @@ El equipo real tiene tres integrantes frente a cuatro indicados en la guía. La 
 
 ### 2.4 Glosario
 
-Glosario: RBT, pruebas basadas en riesgos; condición, regla que puede evaluarse; oráculo, criterio para comparar el resultado; línea base, estado inicial observado; retest, repetición dirigida de una prueba; JWT, token firmado utilizado en la autenticación.
+API: interfaz para intercambiar datos u operaciones entre programas. Endpoint: ruta de una operación del servicio. HTTP: protocolo de las solicitudes y respuestas; HTTPS incorpora protección del transporte. JSON: formato de datos que se analiza para verificar los campos de una respuesta.
+
+RBT: pruebas basadas en riesgos. Riesgo: posibilidad de un fallo y su impacto. Condición: propiedad observable que debe evaluarse. Caso de prueba: precondiciones, entradas y comprobaciones con un resultado esperado. Oráculo: criterio que decide si el resultado observado coincide con el esperado. Evidencia: registro que permite revisar lo ocurrido.
+
+Línea base: estado inicial observado. Token: dato utilizado para acreditar una sesión; JWT: formato firmado del token empleado en los casos de autenticación. Retest: repetición dirigida de una prueba. CT: etiqueta propia que identifica un caso de prueba. P1: prioridad de prueba cuyo cumplimiento se exige para el cierre satisfactorio del ciclo.
 
 ## 3. Contexto de las pruebas
 
@@ -139,6 +148,10 @@ Los cinco riesgos altos/críticos de producto tienen ejecución completa. Cuatro
 ## 5. Estrategia y derivación de casos
 
 ### 5.1 Derivación de condiciones de prueba
+
+Los casos se diseñan a partir de tres fuentes: la guía y las técnicas de la asignatura, el comportamiento documentado por DummyJSON y los riesgos evaluados del alcance. La guía establece un volumen de 20 a 24 casos; se seleccionan 24. Para cada riesgo se formula una condición, se elige una técnica para generar entradas y se fija el resultado esperado antes de ejecutar. El script implementa seis de esos casos y no reemplaza su justificación de diseño.
+
+La identificación es una convención propia del proyecto. En CT-R07-02, CT identifica un caso de prueba, R07 remite al riesgo de falsa persistencia y 02 señala el segundo caso asociado a ese riesgo. C07-02 identifica su condición evaluable. En CT-F01-01, F01 identifica el grupo funcional de login vinculado con F-R01, y el último 01 distingue el caso. Los identificadores permiten localizar el mismo caso en la documentación, el código y sus registros; no son códigos de respuesta de la API.
 
 Cada condición describe una propiedad observable y deriva de un riesgo evaluado. R07 genera C07-01, alta simulada sin persistencia; C07-02, PATCH refleja T1 pero el GET conserva T0; C07-03, DELETE informa eliminación simulada y el GET conserva el recurso. R03 genera C03-01, acceso con token válido; C03-02, rechazo sin token; C03-03, rechazo de firma alterada; C03-04, rechazo tras expiración real.
 
@@ -204,6 +217,10 @@ Trazabilidad de los 24 casos de prueba
 | CT-F05-02 | F-R05 / CF05-2 | Partición de equivalencia: consulta con / sin coincidencias. qa_sin_coincidencias_ + UUID | Aprobado |
 
 ### 5.4 Requisitos de entorno y datos de prueba
+
+Python se utiliza como cliente para las consultas y para la automatización de seis casos. En tests/pruebas_api.py, urllib.request construye y envía las solicitudes; json interpreta sus cuerpos; require compara el estado HTTP y los campos con el resultado esperado. El script registra método, ruta, respuesta y duración, censura datos sensibles y guarda un archivo JSON distinto por ejecución. Utiliza la biblioteca estándar de Python.
+
+Consultar no equivale a probar: una prueba incorpora una expectativa y una comprobación. Por ejemplo, CT-R07-02 requiere GET 200 con título T0, PATCH 200 que refleje T1 y un nuevo GET 200 que conserve T0. Deben cumplirse todas las comprobaciones. Los 18 diseños manuales se ejecutaron mediante inspección HTTP asistida y se registran por separado; no se atribuye su ejecución al script de seis casos.
 
 Entorno: Python 3.10 o posterior, cliente HTTP por HTTPS sin reutilización de cookies. Ejecución registrada: Linux, Python 3.12.14 y urllib. Datos: producto 1, títulos UUID, catálogo observado y credenciales públicas emilys/emilyspass. Los tokens se mantienen temporalmente y se censuran en las evidencias.
 
@@ -284,6 +301,10 @@ Resultados del ciclo de pruebas
 | Riesgos altos/críticos con ejecución | 5 de 5 |
 | Riesgos altos/críticos con todos sus casos aprobados | 4 de 5 |
 | Incidencia abierta | INC-001 |
+
+La interpretación combina estado HTTP y contenido. 200 indica una respuesta satisfactoria; 201, creación; 401, falta de autenticación válida; 403, acceso rechazado; 404, recurso no encontrado; 500, error interno del servidor. Un código satisfactorio no basta si los datos incumplen la condición.
+
+Un caso negativo aprueba cuando devuelve el rechazo esperado: por ejemplo, un acceso sin token debe fallar para el consumidor y aprobar como prueba si se observa 401/403 sin perfil. Aprobado significa coincidencia con el oráculo del caso, no ausencia de errores en todo el servicio. Fallido significa discrepancia; bloqueado significa que el entorno o una dependencia impidió evaluar el caso.
 
 Las escrituras simuladas cumplieron el criterio de respuesta y consulta posterior. Login válido, ausencia y expiración de tokens, renovación, paginación, búsqueda y categorías conservaron los resultados registrados en sus casos.
 
