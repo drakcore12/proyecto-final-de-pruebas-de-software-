@@ -12,6 +12,7 @@ Institución Universitaria Pascual Bravo
 
 ## Anexos técnicos
 
+- [Plan completo en Markdown](docs/plan-de-pruebas.md).
 - [24 casos y trazabilidad](docs/casos-y-trazabilidad.md).
 - [Código de las seis pruebas automatizadas](tests/pruebas_api.py).
 - [Resultados por caso](evidencias/resultados-consolidados.json).
@@ -43,4 +44,4 @@ Cada ejecución guarda un registro nuevo en `evidencias/`. Los datos del servici
 
 ## Seguimiento
 
-Los commits registran los cambios y las [Issues](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/issues) reúnen los hallazgos y las tareas. La versión documental 3.0 consolida el informe en Google Docs y mantiene los casos en Markdown. Las revisiones del documento quedan en su historial nativo.
+Los commits registran los cambios y las [Issues](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/issues) reúnen los hallazgos y las tareas. La versión documental 3.1 conserva el informe principal en Google Docs y una versión del plan en Markdown, con los subapartados de la guía del proyecto. Los commits registran cada versión publicada en el repositorio.
