@@ -3,12 +3,15 @@
 **Evaluación de la API DummyJSON mediante pruebas basadas en riesgos.**
 
 Miguel Ángel Noreña Cano, Marlon Maldonado y Aldair Estiven Novoa  
-Institución Universitaria Pascual Bravo
+Institución Universitaria Pascual Bravo  
+Docente: Roberto José Calderón Bermejo  
+Sustentación: 19 de noviembre de 2026
 
 ## Documentos de entrega
 
 - **[Informe final](https://docs.google.com/document/d/14eZrwDed-F5Lf6CiXBdScSnbSLmlF25YsoXzNlJ_lUc/edit)**
 - **[Presentación en Canva](https://canva.link/nu7c94jstfmkzp2)**
+- [Guion de sustentación](https://docs.google.com/document/d/1AL-onFcuFjaQSweLnWfU2dE-hFODnr8a7ICzhR0Z6kI/edit)
 
 ## Anexos técnicos
 
@@ -41,6 +44,10 @@ python tests/pruebas_api.py CT-R07-02
 ```
 
 Cada ejecución guarda un registro nuevo en `evidencias/`. Los datos del servicio pueden cambiar. Los registros originales se conservan con su fecha y procedencia.
+
+## Distribución de la exposición
+
+Portada y objetivo: cualquiera. Miguel presenta las diapositivas 3–5; Marlon, 6–8; Aldair, 9–11. El guion se organiza en tres bloques consecutivos.
 
 ## Seguimiento
 

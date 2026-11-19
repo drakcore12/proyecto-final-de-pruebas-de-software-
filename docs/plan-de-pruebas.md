@@ -14,6 +14,8 @@ Institución Universitaria Pascual Bravo
 
 Pruebas de Software
 
+Docente: Roberto José Calderón Bermejo
+
 19 de noviembre de 2026
 
 ## Resumen
@@ -34,7 +36,7 @@ Institución Universitaria Pascual Bravo. Autores: Miguel Ángel Noreña Cano, M
 
 ### 1.3 Autoridad de aprobación
 
-El docente responsable de la asignatura Pruebas de Software es la autoridad de aprobación académica de este plan y sus adaptaciones. Los autores presentan el expediente para evaluación; no consta una aprobación docente registrada ni se atribuye aceptación del servicio externo.
+Roberto José Calderón Bermejo, docente de Pruebas de Software, es la autoridad de aprobación académica de este plan y sus adaptaciones. Los autores presentan el expediente para evaluación; no consta una aprobación docente registrada ni se atribuye aceptación del servicio externo.
 
 ### 1.4 Historial de cambios y control de versiones
 
