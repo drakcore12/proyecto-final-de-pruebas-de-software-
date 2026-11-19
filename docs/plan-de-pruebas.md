@@ -84,7 +84,7 @@ API pública https://dummyjson.com. Recursos: /auth/login, /auth/me, /auth/refre
 
 ### 3.2 Alcance y exclusiones de las pruebas
 
-Se evalúan login, perfil, renovación de sesión, consultas, categorías, búsqueda, paginación y POST/PATCH/DELETE simulados. Se excluyen los demás módulos, la interfaz de un cliente propio, el código interno, las bases de datos, la carga y la seguridad profunda, conforme a la justificación y los riesgos residuales de 2.3.
+Se evalúan login, perfil, renovación de sesión, consultas, categorías, búsqueda, paginación y POST/PATCH/DELETE simulados. Se excluyen los demás módulos, la interfaz de un cliente propio, el código interno, las bases de datos, la carga y la seguridad profunda, conforme a la justificación y los riesgos residuales de 2.3. Como antecedente, la Actividad de clase 2, fechada el 24 de septiembre de 2026, identificó disponibilidad, autenticación, productos, usuarios, publicaciones/comentarios, carritos y tareas. El ciclo final concentra el esfuerzo en autenticación y productos; los demás elementos del taller inicial no se presentan como cubiertos por estas 24 pruebas (Actividad de clase 2, 2026).
 
 ### 3.3 Suposiciones y restricciones
 
@@ -245,7 +245,7 @@ La estimación representa capacidad planificada. Las reparaciones del proveedor 
 
 Miguel Ángel Noreña Cano: alcance, adaptación y riesgos, casos 1–8. Marlon Maldonado: condiciones, datos y trazabilidad, casos 9–16. Aldair Estiven Novoa: automatización y evidencias, casos 17–24. La revisión cruzada prevista asigna los casos 1–8 a Marlon, 9–16 a Aldair y 17–24 a Miguel.
 
-La ejecución de los seis casos automatizados utiliza aserciones en el script. Los 18 diseños manuales fueron ejecutados mediante inspección HTTP asistida por herramientas y un conductor de solicitudes. La responsabilidad académica y la revisión independiente se distinguen de esa ejecución técnica. La revisión independiente no está registrada como completada.
+La ejecución de los seis casos automatizados utiliza aserciones en el script. Los 18 diseños manuales fueron ejecutados mediante inspección HTTP asistida por herramientas y un conductor de solicitudes. La responsabilidad académica y la revisión independiente se distinguen de esa ejecución técnica. La revisión independiente no está registrada como completada. Sí consta una coevaluación previa de la Actividad 2 por el equipo revisor 2: se reconocen la identificación de funcionalidades y los criterios verificables, y se solicitan exclusiones explícitas, precisión de actores y códigos HTTP. Estos aspectos se desarrollan en 2.3, 3.2–3.4 y en los oráculos de los casos. Esa revisión del alcance inicial no sustituye la revisión independiente del expediente final (Actividad de clase 2, 2026; Coevaluación de la Actividad 2, s. f.).
 
 ## 8. Cronograma
 
@@ -263,7 +263,7 @@ Cronograma de tres semanas
 | 2 / días 8–14 | T4 14 h + T5 10 h | 24 h; scripts y primera ejecución |
 | 3 / días 15–21 | T5 4 h + T6 6 h + T7 6 h + T8 8 h | 24 h; retest e informe |
 
-La Tabla 6 organiza las actividades en un ciclo planificado de tres semanas. Fechas documentadas: ejecución y retest, 9 de noviembre de 2026; publicación inicial en GitHub, 10 de noviembre de 2026; consolidación y revisión documental, 18 de noviembre de 2026. La sustentación está programada para el 19 de noviembre de 2026, según confirmación del equipo. La fecha oficial de inicio del ciclo no está acreditada; las semanas relativas expresan planificación y no demuestran por sí mismas tres semanas efectivamente trabajadas.
+La Tabla 6 organiza las actividades en un ciclo planificado de tres semanas. Fechas documentadas: ejecución y retest, 9 de noviembre de 2026; publicación inicial en GitHub, 10 de noviembre de 2026; consolidación y revisión documental, 18 de noviembre de 2026. La sustentación está programada para el 19 de noviembre de 2026, según confirmación del equipo. La fecha oficial de inicio del ciclo no está acreditada; las semanas relativas expresan planificación y no demuestran por sí mismas tres semanas efectivamente trabajadas. El taller del 24 de septiembre de 2026 es un antecedente formativo documentado; no se lo identifica como fecha oficial de inicio del ciclo final de tres semanas.
 
 ## 9. Resultados y discusión
 
@@ -299,7 +299,11 @@ Como trabajo posterior corresponde verificar la respuesta a firmas inválidas tr
 
 ## Referencias
 
+Actividad de clase 2: Identificación del objeto de prueba (Test items) [Taller diligenciado y coevaluación]. (2026, 24 de septiembre).
+
 Casos de pruebas: Ingeniería de pruebas, especificación y diseño formal [Diapositivas de clase]. (s. f.).
+
+Coevaluación de la Actividad 2 [Observaciones manuscritas del equipo revisor]. (s. f.).
 
 DummyJSON. (s. f.-a). Auth. [https://dummyjson.com/docs/auth](https://dummyjson.com/docs/auth)
 
