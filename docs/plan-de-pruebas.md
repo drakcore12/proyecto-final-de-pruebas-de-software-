@@ -348,5 +348,5 @@ Plan de pruebas de software: Guía de estructura y gestión [Guía de la asignat
 
 [Registro consolidado por caso](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/blob/main/evidencias/resultados-consolidados.json)
 
-[INC-001: seguimiento del hallazgo](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/issues/1)
+[INC-001: registro del hallazgo](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/issues/1)
 

@@ -5,13 +5,12 @@
 Miguel Ángel Noreña Cano, Marlon Maldonado y Aldair Estiven Novoa  
 Institución Universitaria Pascual Bravo  
 Docente: Roberto José Calderón Bermejo  
-Sustentación: 19 de noviembre de 2026
+Fecha: 19 de noviembre de 2026
 
 ## Documentos de entrega
 
 - **[Informe final](https://docs.google.com/document/d/14eZrwDed-F5Lf6CiXBdScSnbSLmlF25YsoXzNlJ_lUc/edit)**
 - **[Presentación en Canva](https://canva.link/nu7c94jstfmkzp2)**
-- [Guion por bloques](https://docs.google.com/document/d/1AL-onFcuFjaQSweLnWfU2dE-hFODnr8a7ICzhR0Z6kI/edit)
 
 ## Qué es DummyJSON y qué evaluamos
 
@@ -54,7 +53,7 @@ Un caso negativo puede aprobar al recibir el rechazo esperado: consultar un perf
 
 Resultado histórico del **9 de noviembre de 2026: 24 ejecutados, 23 aprobados y 1 fallido**. [INC-001](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/issues/1): una firma JWT alterada produjo HTTP 500 dos veces frente a 401/403 esperado, sin acceso al perfil. El hallazgo sigue abierto.
 
-## Reproducción y demostración
+## Ejecución de las pruebas
 
 Con Python 3.10 o posterior, descarga o clona el repositorio y abre una terminal en su carpeta raíz. Para ejecutar los seis automatizados:
 
@@ -78,8 +77,3 @@ El ejemplo obtiene T0 mediante GET, recibe T1 mediante PATCH y confirma T0 con u
 - [Resultados consolidados por caso](evidencias/resultados-consolidados.json).
 - [Evidencias originales y capturas](evidencias).
 
-## Exposición y seguimiento
-
-Portada y objetivo: cualquiera. Miguel presenta 3–5; Marlon, 6–8; Aldair, 9–11.
-
-La versión documental 3.2 explica conceptos, diseño y ejecución desde cero. Los commits conservan los cambios del plan, los casos y el código. Las [Issues](https://github.com/drakcore12/proyecto-final-de-pruebas-de-software-/issues) permiten seguir los hallazgos y las tareas.
